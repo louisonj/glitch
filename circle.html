@@ -7,6 +7,7 @@
 			display: block;
 			margin: 0 auto;
 			border: 4px solid rgba(0,150,150,0.7);
+			margin-bottom: 10px;
 		}
 
 		h1 {
@@ -21,6 +22,7 @@
 	<h1 class="title">Draw some circles</h1>
 
 	<canvas id="canvas"></canvas>
+	<canvas id="canvas2"></canvas>
 
 	<script type="text/javascript">
 
@@ -28,8 +30,8 @@
 
 		var canvas = document.getElementById("canvas");
 
-		var width = canvas.width = 500;
-		var height = canvas.height = 300;
+		var width = canvas.width = 300;
+		var height = canvas.height = 170;
 
 		var ctx = canvas.getContext("2d");
 
@@ -45,17 +47,44 @@
 			for(var i = 0; i < num ; i++) {
 				var x = randomInt(0, width);
 				var y = randomInt(0, height);
-				var radius = Math.floor(Math.random() * 100) + 10;
+				var radius = Math.floor(Math.random() * 50) + 10;
 				
 				ctx.beginPath();
-				ctx.arc(x, y, radius, 0, Math.PI * 2);
+					ctx.arc(x, y, radius, 0, Math.PI * 2);
 				ctx.fill();
 
 				ctx.beginPath();
-				ctx.arc(x ,y , 5, 0, Math.PI * 2);
+					ctx.arc(x ,y , 5, 0, Math.PI * 2);
 				ctx.stroke();
 			}
 		}
+
+		//------------------------
+		var canvas2 = document.getElementById("canvas2");
+		var width2 = canvas2.width = 300;
+		var height2 = canvas2.height = 170;
+
+		var ctx2 = canvas2.getContext("2d");
+
+		var centX = width2 / 2;
+		var centY = height2 / 2;
+
+		ctx2.fillStyle="rgb(180, 180, 180)";
+
+		ctx2.fillRect(0, 0, width2, height2);
+
+		for(var radius = 0; radius < 200; radius += 10) {
+			ctx2.beginPath();
+				ctx2.arc(centX, centY, radius, 0, Math.PI * 2);
+			ctx2.stroke();
+		}
+		
+
+
+		
+
+
+		//------------------------
 
 		function randomInt(min, max) {
 			return Math.floor(Math.random() * (max - min + 1)) + min;
